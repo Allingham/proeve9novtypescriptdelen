@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en-US">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <title>Plante Appen</title>
+</head>
+
+<body>
+  <h1>Planter!</h1>
+  <div id="app">
+    <button v-on:click="GetAllPlants">Get All</button>
+    <input id="imputField" v-model="input"></input>
+    <button id="GetById" v-on:click="GetPlantById(input)">Get by ID</button>
+    <button id="GetByType" v-on:click="GetAllPlantsByType">Get by Type</button>
+    <ul id="outputList" v-for="plante in planter">
+      {{plante}}
+    </ul>
+    <h2>Post en Plante!</h2>
+    Navn: <input v-model="planteData.planteNavn"></input>
+    Type: <input v-model="planteData.planteType"></input>
+    Pris: <input pattern="[0-9]" type="number" v-model.number="planteData.price"></input>
+    Max Højde: <input pattern="[0-9]" type="number" v-model.number="planteData.maksHoejde"></input>
+    <button v-on:click="AddPlant">Post Den!</button>
+    <div>
+      <h1>Find en plante!</h1>
+      <input v-model="findPlant"/> <button v-on:click="GetPlantByname(findPlant)"> find planten</button>
+      <h2>{{displayPlant.planteNavn}}</h2>
+      Type: {{displayPlant.planteType}} <br>
+      Pris: {{displayPlant.price}} <br>
+      max Højde: {{displayPlant.maksHoejde}} <br>
+    </div>
+  </div>
+
+  <script src="bundle.js"></script>
+</body>
+
+</html>
